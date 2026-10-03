@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package alumnos;
+
+service RegistroAlumnos {
+    rpc RegistrarAlumno (AlumnoRequest) returns (Respuesta);
+    rpc ConsultarAlumno (ConsultaRequest) returns (AlumnoResponse);
+    rpc ActualizarAlumno (AlumnoRequest) returns (Respuesta);
+    rpc EliminarAlumno (ConsultaRequest) returns (Respuesta);
+
+    rpc BuscarPorCriterios (BusquedaRequest) returns (stream AlumnoResponse);
+    rpc ListarAlumnos (Vacio) returns (stream AlumnoResponse);
+}
+
+message Vacio {}
+
+message AlumnoRequest {
+    string nombre = 1;
+    string apellido = 2;
+    int32 edad = 3;
+    string curso = 4;
+    string direccion = 5;
+    int32 id = 6;
+}
+
+message ConsultaRequest {
+    int32 id = 1;
+}
+
+message BusquedaRequest {
+    string nombre = 1;
+    string apellido = 2;
+    string curso = 3;
+}
+
+message AlumnoResponse {
+    int32 id = 1;
+    string nombre = 2;
+    string apellido = 3;
+    int32 edad = 4;
+    string curso = 5;
+    string direccion = 6;
+    bool encontrado = 7;
+    string mensaje = 8;
+}
+
+message Respuesta {
+    bool exito = 1;
+    string mensaje = 2;
+    int32 id_generado = 3;
+}

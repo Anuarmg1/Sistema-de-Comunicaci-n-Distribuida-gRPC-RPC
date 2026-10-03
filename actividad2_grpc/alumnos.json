@@ -1,0 +1,10 @@
+[
+    {
+        "id": 1,
+        "nombre": "thaiz",
+        "apellido": "camara",
+        "edad": 45,
+        "curso": "señales",
+        "direccion": "cdmc"
+    }
+]
